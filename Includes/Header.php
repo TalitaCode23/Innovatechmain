@@ -56,7 +56,7 @@
              <li>
                  <a href="#">Calendário</a>
                  <ul class="submenu">
-                     <li><a href="#">Visualizar Calendário</a></li>
+                     <li><a href="../Shared/VisualizarCalendario.php">Visualizar Calendário</a></li>
                  </ul>
              </li>
  

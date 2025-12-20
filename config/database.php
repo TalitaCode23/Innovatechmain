@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "academic_hub";
-    private $username = "root"; // Altere conforme seu usuário do MySQL
-    private $password = ""; // Altere conforme sua senha do MySQL
+    private $username = "root"; 
+    private $password = ""; 
     public $conn;
 
     public function getConnection() {

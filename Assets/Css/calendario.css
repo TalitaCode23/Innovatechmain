@@ -1,0 +1,61 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.fundo-tecnologico {
+    min-height: 100vh;
+    background-image: url("../Img/FundoInnova.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#calendar {
+    width: 58%;
+    height: 20%;           
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+}
+
+.fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.fc-button {
+    background-color: #4f46e5 !important;
+    border: none !important;
+    border-radius: 6px !important;
+}
+
+.fc-button:hover {
+    background-color: #4338ca !important;
+}
+
+.fc-event {
+    background-color: #22c55e !important;
+    border: none !important;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    padding: 2px 4px;
+}
+
+@media (max-width: 768px) {
+    .conteudo {
+        padding: 20px 10px;
+    }
+
+    #calendar {
+        padding: 10px;
+    }
+}

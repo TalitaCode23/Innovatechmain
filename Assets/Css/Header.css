@@ -62,8 +62,9 @@ header {
 }
 
 .menu > li > a:hover {
+    background-color: #0A0A33;
     color: #00D4FF;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Submenus */
@@ -72,7 +73,7 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #444;
+    background-color: #11114d;
     border-radius: 5px;
     min-width: 100px;
     z-index: 1;

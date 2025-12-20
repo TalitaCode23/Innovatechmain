@@ -1,24 +1,30 @@
-/* Imagem */
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
+/* RESET BÁSICO DA HOME */
+html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    overflow: hidden;
-    min-height: 60vh;
+    overflow-x: hidden;
+}
+/* CONTEÚDO PRINCIPAL */
+main {
+    width: 100%;
+    display: block;
 }
 
-.image-container img {
+.fundo-tecnologico {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 420px; 
+    background-image: url("../Img/FundoInnova.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* img fundo */
- body {
-    background-image: url("../Img/FundoInnova.png"); 
-    background-size: cover; /* faz a imagem cobrir toda a tela */
-    background-position: center; 
-    background-repeat: no-repeat; 
+.conteudo {
+    padding: 40px 0;
+}
+
+section {
+    height: auto;
+    min-height: unset;
 }
