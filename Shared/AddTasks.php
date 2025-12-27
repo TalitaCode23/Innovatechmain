@@ -1,6 +1,11 @@
 <?php
-include("../Config/db.php");
+require_once '../config/Database.php';
+require_once '../Includes/acl.php';
 
+if (!$acl->pode('CRIAR_TAREFA')) {
+    header("Location: acesso-negado.php");
+    exit;
+}
 
 $sqlProjetos = "SELECT id, nome FROM projetos";
 $resultProjetos = $conn->query($sqlProjetos);

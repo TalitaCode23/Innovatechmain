@@ -1,3 +1,12 @@
+<?php
+require_once '../Includes/acl.php';
+
+if (!$acl->pode('EDITAR_PROJETO')) {
+    header("Location: acesso-negado.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

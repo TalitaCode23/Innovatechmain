@@ -1,5 +1,11 @@
 <?php
-include("../Config/db.php"); 
+include("../config/database.php");
+require_once '../Includes/acl.php';
+
+if (!$acl->pode('CONCLUIR_TAREFA')) {
+    header("Location: acesso-negado.php");
+    exit;
+} 
 
 $idTarefa = $_GET['id'] ?? null;
 $nomeTarefa = "";

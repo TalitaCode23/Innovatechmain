@@ -1,3 +1,12 @@
+<?php
+require_once '../Includes/acl.php';
+
+if (!$acl->pode('ACESSAR_SUPORTE')) {
+    header("Location: acesso-negado.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

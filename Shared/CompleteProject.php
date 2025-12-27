@@ -1,6 +1,11 @@
 <?php
-include("../Config/db.php"); 
+require_once '../Includes/acl.php';
+require_once '../config/Database.php';
 
+if (!$acl->pode('CONCLUIR_PROJETO')) {
+    header("Location: acesso-negado.php");
+    exit;
+}
 
 $idProjeto = $_GET['id'] ?? null;
 

@@ -1,3 +1,13 @@
+<?php
+require_once '../config/Database.php';
+require_once '../Includes/acl.php';
+
+if (!$acl->pode('EDITAR_TAREFA')) {
+    header("Location: acesso-negado.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

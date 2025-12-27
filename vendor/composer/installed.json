@@ -1,0 +1,60 @@
+{
+    "packages": [
+        {
+            "name": "gburtini/acl",
+            "version": "0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gburtini/PHP-ACL.git",
+                "reference": "1ee2591b0401dccd66cd97da1dee0f2c171a75cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gburtini/PHP-ACL/zipball/1ee2591b0401dccd66cd97da1dee0f2c171a75cd",
+                "reference": "1ee2591b0401dccd66cd97da1dee0f2c171a75cd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "time": "2015-05-04T16:21:04+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "gburtini\\ACL": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Giuseppe Burtini",
+                    "email": "joe@truephp.com",
+                    "homepage": "http://giuseppeburtini.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dependency free, simple access control lists for PHP.",
+            "homepage": "http://github.com/gburtini/PHP-ACL",
+            "keywords": [
+                "access",
+                "access control",
+                "acl",
+                "login",
+                "security",
+                "user"
+            ],
+            "support": {
+                "issues": "https://github.com/gburtini/PHP-ACL/issues",
+                "source": "https://github.com/gburtini/PHP-ACL/tree/master"
+            },
+            "install-path": "../gburtini/acl"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

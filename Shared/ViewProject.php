@@ -1,5 +1,5 @@
 <?php
-include("../config/conexao.php");
+include("../config/database.php");
 
 $sql = "SELECT * FROM projetos";
 $result = $conn->query($sql);
