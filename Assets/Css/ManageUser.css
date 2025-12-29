@@ -1,107 +1,188 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+/* img fundo */
+ body {
+    background-image: url("../Img/FundoInnova.png"); 
+    background-size: cover; /* faz a imagem cobrir toda a tela */
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+/* ===============================
+   CONTAINER PRINCIPAL
+================================ */
+.container-branco {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-body {
-    background: #f4f6f9;
-    padding: 40px;
-    color: #333;
-}
-
-/* TÍTULO */
-h2 {
-    margin-bottom: 20px;
+.container-branco h2 {
+    margin-bottom: 10px;
     color: #2c3e50;
 }
 
-/* TABELA */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.descricao {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 25px;
 }
 
-thead {
-    background: #34495e;
+/* ===============================
+   TABELA
+================================ */
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.tabela-usuarios thead {
+    background: #2c3e50;
     color: #fff;
 }
 
-thead th {
-    padding: 15px;
+.tabela-usuarios th,
+.tabela-usuarios td {
+    padding: 12px 15px;
     text-align: left;
-    font-size: 14px;
+}
+
+.tabela-usuarios th {
+    font-weight: 600;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
 
-tbody tr {
+.tabela-usuarios tbody tr {
     border-bottom: 1px solid #eee;
-    transition: background 0.2s;
 }
 
-tbody tr:hover {
-    background: #f0f4f8;
+.tabela-usuarios tbody tr:hover {
+    background: #f8f9fa;
 }
 
-tbody td {
-    padding: 14px;
-    font-size: 14px;
+.center {
+    text-align: center;
 }
 
-/* SELECT */
-select {
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background: #fff;
+/* ===============================
+   SWITCH (ATIVAR / DESATIVAR)
+================================ */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
     cursor: pointer;
-    transition: all 0.2s ease;
+    inset: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
 }
 
-select:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: 0.4s;
+    border-radius: 50%;
 }
 
-/* RESPONSIVO */
+.switch input:checked + .slider {
+    background-color: #27ae60;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+/* ===============================
+   AÇÕES / BOTÕES
+================================ */
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.acoes button,
+.acoes a {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Botão salvar */
+.btn-salvar {
+    background: #52d44e;
+    color: white;
+}
+
+.btn-salvar:hover {
+    background: #52d44e;
+}
+
+/* Botão voltar */
+.btn-voltar {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-voltar:hover {
+    background: #dc3545;
+}
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #27ae60;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s;
+    transform: translateY(20px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
 @media (max-width: 768px) {
-
-    body {
-        padding: 20px;
-    }
-
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead {
-        display: none;
-    }
-
-    tbody tr {
-        margin-bottom: 15px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        padding: 10px;
-        background: #fff;
-    }
-
-    tbody td {
-        display: flex;
-        justify-content: space-between;
+    .tabela-usuarios th,
+    .tabela-usuarios td {
+        font-size: 0.85rem;
         padding: 10px;
     }
 
-    tbody td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #555;
+    .acoes {
+        flex-direction: column;
+        align-items: stretch;
     }
 }

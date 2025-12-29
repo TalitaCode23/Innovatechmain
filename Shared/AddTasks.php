@@ -65,10 +65,11 @@ require_once __DIR__ . '/../Includes/acl.php';
          </select>
       </div>
 
-      <div class="form-actions">
-        <button type="submit" id="salvar">Salvar</button>
-        <button type="button" id="cancelar" onclick="window.location.href='../Public/Home.php'">Cancelar</button>
-      </div>
+       <!-- BOTÕES -->
+        <div class="form-actions">
+            <button type="submit" id="salvar">Salvar</button>
+            <button type="button" id="cancelar" onclick="history.back()">Cancelar</button>
+        </div>
 
     </form>
   </div>

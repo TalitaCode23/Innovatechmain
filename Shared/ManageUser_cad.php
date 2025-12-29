@@ -21,7 +21,7 @@ $pdo = $db->getConnection();
 // ===============================
 // BUSCA USUÁRIOS
 // ===============================
-$sql = "SELECT id, nome, email, ativo FROM usuarios";
+$sql = "SELECT id, nome, email, ativo, criado_em FROM usuarios";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,14 +31,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <link rel="stylesheet" href="../Assets/css/Footer.css" />
 <link rel="stylesheet" href="../Assets/css/Header.css" />
+<link rel="stylesheet" href="../Assets/css/ManageUser.css" />
 
 <div class="container-branco">
 
-    <h2>Gerenciar Usuários - Acesso</h2>
+    <h1>Gerenciar Usuários - Acesso</h1>
 
     <p class="descricao">
-        Aqui você controla quais usuários estão ativos no sistema.
-        <br>
         ❗ Usuários não são excluídos — apenas ativados ou desativados.
     </p>
 
@@ -59,7 +58,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?= htmlspecialchars($usuario['nome']) ?></td>
                     <td><?= htmlspecialchars($usuario['email']) ?></td>
-                    <td><?= date('d/m/Y', strtotime($usuario['data_solicitacao'])) ?></td>
+                    <td><?= date('d/m/Y', strtotime($usuario['criado_em'])) ?></td>
 
                     <!-- ALUNO -->
                     <td class="center">
@@ -96,16 +95,16 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
 
     <div class="acoes">
-        <button class="btn-alterar" disabled>Alterar</button>
-        <button class="btn-salvar">Salvar</button>
-        <a href="Dashboard.php" class="btn-voltar">Voltar</a>
+        <button class="btn-salvar" id="btnSalvar">Salvar</button>
+        <a href="../Public/Home.php" class="btn-voltar">Voltar</a>
     </div>
 
 </div>
+<div id="toast" class="toast">Permissão salva com sucesso!</div>
 
 <script>
 function alterarStatus(usuarioId, tipo, ativo) {
-    fetch('../Actions/UpdateUserStatus.php', {
+    fetch('../Includes/UpdateUserStatus.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -126,6 +125,18 @@ function alterarStatus(usuarioId, tipo, ativo) {
         alert('Erro de comunicação com o servidor.');
     });
 }
+</script>
+<script>
+const btnSalvar = document.getElementById('btnSalvar');
+const toast = document.getElementById('toast');
+
+btnSalvar.addEventListener('click', function () {
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+});
 </script>
 
 <?php include __DIR__ . '/../Includes/Footer.php'; ?>
