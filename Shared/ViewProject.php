@@ -1,8 +1,7 @@
 <?php
-include("../config/database.php");
 
-$sql = "SELECT * FROM projetos";
-$result = $conn->query($sql);
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

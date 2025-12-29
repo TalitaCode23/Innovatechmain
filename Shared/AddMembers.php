@@ -1,21 +1,7 @@
 <?php
-require_once '../Includes/acl.php';
-require_once '../vendor/Core/ProjetoAcl.php';
 
-$projeto_id = $_GET['projeto_id'] ?? null;
-
-if (!$projeto_id) {
-    header("Location: acesso-negado.php");
-    exit;
-}
-
-if (
-    !$acl->pode('GERENCIAR_MEMBROS') ||
-    !ProjetoAcl::podeGerenciar($pdo, $_SESSION['user_id'], $projeto_id)
-) {
-    header("Location: acesso-negado.php");
-    exit;
-}
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

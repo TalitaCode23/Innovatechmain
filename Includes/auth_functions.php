@@ -174,7 +174,7 @@ function protectPage($page_name) {
         if (!isLoggedIn()) {
             header('Location: ./Public/Login.php');
         } else {
-            header('Location: ../Shared/acesso-negado.php');
+            echo 'Acesso negado';
         }
         exit();
     }

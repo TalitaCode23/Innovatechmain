@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "academic_hub";
+    private $db_name = "Innovatechmain";
     private $username = "root"; 
     private $password = ""; 
     public $conn;

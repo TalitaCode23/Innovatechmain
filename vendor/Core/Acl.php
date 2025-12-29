@@ -1,33 +1,30 @@
 <?php
+
 class Acl {
+    private PDO $pdo;
+    private array $roles;
 
-    private $pdo;
-    private $permissoes = [];
-
-    public function __construct($pdo, $role)
-    {
+    public function __construct(PDO $pdo, array $roles) {
         $this->pdo = $pdo;
-        $this->carregarPermissoes($role);
+        $this->roles = $roles;
     }
 
-    private function carregarPermissoes($role)
-    {
+    public function can(string $permissao): bool {
+        $placeholders = implode(',', array_fill(0, count($this->roles), '?'));
+
         $sql = "
-            SELECT p.nome 
-            FROM roles_permissoes rp
-            JOIN permissoes p ON p.id = rp.permissao_id
+            SELECT COUNT(*)
+            FROM permissoes p
+            JOIN roles_permissoes rp ON rp.permissao_id = p.id
             JOIN roles r ON r.id = rp.role_id
-            WHERE r.nome = ?
+            WHERE p.nome = ?
+            AND r.nome IN ($placeholders)
         ";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$role]);
+        $stmt->execute(array_merge([$permissao], $this->roles));
 
-        $this->permissoes = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $stmt->fetchColumn() > 0;
     }
 
-    public function pode($permissao)
-    {
-        return in_array($permissao, $this->permissoes);
-    }
 }

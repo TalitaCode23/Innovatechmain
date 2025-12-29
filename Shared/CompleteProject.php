@@ -1,25 +1,7 @@
 <?php
-require_once '../Includes/acl.php';
-require_once '../config/Database.php';
 
-if (!$acl->pode('CONCLUIR_PROJETO')) {
-    header("Location: acesso-negado.php");
-    exit;
-}
-
-$idProjeto = $_GET['id'] ?? null;
-
-$nomeProjeto = "";
-
-if ($idProjeto) {
-    $sql = "SELECT nome FROM projetos WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $idProjeto);
-    $stmt->execute();
-    $stmt->bind_result($nomeProjeto);
-    $stmt->fetch();
-    $stmt->close();
-}
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

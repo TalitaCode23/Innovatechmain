@@ -1,24 +1,7 @@
 <?php
-include("../config/database.php");
-require_once '../Includes/acl.php';
 
-if (!$acl->pode('CONCLUIR_TAREFA')) {
-    header("Location: acesso-negado.php");
-    exit;
-} 
-
-$idTarefa = $_GET['id'] ?? null;
-$nomeTarefa = "";
-
-if ($idTarefa) {
-    $sql = "SELECT nome FROM tarefas WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $idTarefa);
-    $stmt->execute();
-    $stmt->bind_result($nomeTarefa);
-    $stmt->fetch();
-    $stmt->close();
-}
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

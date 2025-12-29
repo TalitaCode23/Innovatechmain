@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php'; // seu arquivo atual que cria $conn
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: ../Public/Login.php");
@@ -45,22 +45,41 @@ if (!password_verify($senha, $user['senha'])) {
     exit;
 }
 
-// LOGIN OK
-$_SESSION['usuario_id']    = $user['id'];
-$_SESSION['usuario_nome']  = $user['nome'];
-$_SESSION['usuario_email'] = $user['email'];
-$_SESSION['usuario_tipo']  = $user['tipo_solicitado'];
+/* =========================================
+   BUSCAR ROLES DO USUÁRIO
+========================================= */
 
-// Redirecionamento
-switch (strtolower($user['tipo_solicitado'])) {
-    case 'admin':
-        header("Location: ../Public/Home.php");
-        break;
-    case 'coordenador':
-        header("Location: ../Public/Home.php");
-        break;
-    default:
-        header("Location: ../Public/Home.php");
+$sql = "
+    SELECT DISTINCT r.nome
+    FROM usuarios_roles ur
+    JOIN roles r ON r.id = ur.role_id
+    WHERE ur.usuario_id = ?
+";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user['id']);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$roles = [];
+while ($row = $result->fetch_assoc()) {
+    $roles[] = $row['nome'];
 }
+
+/* =========================================
+   LOGIN OK - SETAR SESSÃO
+========================================= */
+
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['user_nome'] = $user['nome'];
+$_SESSION['user_email'] = $user['email'];
+$_SESSION['user_roles'] = $roles;
+$_SESSION['user_aprovado'] = (bool)$user['aprovado'];
+$_SESSION['user_tipo_solicitado'] = $roles[0] ?? 'Aluno';
+
+/* =========================================
+   REDIRECIONAMENTO
+========================================= */
+
+header("Location: ../Public/Home.php");
 exit;
-?>

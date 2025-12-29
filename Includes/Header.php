@@ -72,12 +72,12 @@
                  <a href="#">Configurações</a>
                  <ul class="submenu">
                      <li><a href="../Shared/SystemSettings.php">Configurações do Sistema</a></li>
-                     <li><a href="../Users/Admin/ValidateUser.php">Gerenciar Usuários</a></li>
+                     <li><a href="../Shared/ManageUser_cad.php">Gerenciar Usuários</a></li>
                  </ul>
              </li>
  
              <li><a href="../Shared/Support.php">Suporte</a></li>
-             <li><a href="#">Sair</a></li>
+             <li><a href="../Public/Login.php">Sair</a></li>
  
              <li class="bell-icon">
                  <a href="javascript:void(0)">

@@ -1,14 +1,7 @@
 <?php
-include("../config/Database.php");
-require_once '../Includes/acl.php';
 
-if (!$acl->pode('VISUALIZAR_PROJETOS')) {
-    header("Location: acesso-negado.php");
-    exit;
-}
-
-$sql = "SELECT * FROM projetos ORDER BY data_fim IS NULL, data_fim ASC";
-$result = $conn->query($sql);
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

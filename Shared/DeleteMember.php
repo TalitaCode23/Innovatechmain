@@ -1,10 +1,7 @@
 <?php
-require_once '../Includes/acl.php';
 
-if (!$acl->pode('GERENCIAR_MEMBROS')) {
-    header("Location: acesso-negado.php");
-    exit;
-}
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>

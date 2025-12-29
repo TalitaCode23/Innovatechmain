@@ -1,14 +1,7 @@
 <?php
-session_start();
-include("../Config/db.php");
 
-// Puxa todos os projetos
-$sqlProjetos = "SELECT id, nome FROM projetos";
-$resultProjetos = $conn->query($sqlProjetos);
-
-// Puxa todos os usuários (membros)
-$sqlMembros = "SELECT id, nome FROM usuarios";
-$resultMembros = $conn->query($sqlMembros);
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../Includes/acl.php';
 ?>
 
 <!DOCTYPE html>
